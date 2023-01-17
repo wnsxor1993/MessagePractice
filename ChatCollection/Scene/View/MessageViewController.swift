@@ -12,9 +12,6 @@ import Then
 class MessageViewController: UIViewController {
 
     private lazy var messageCollectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: .init()).then {
-//        let flowLayout = MessageCollectionViewLayout()
-//        flowLayout.delegate = self
-        
         guard let compositionalLayout = MessageCompositionalLayout().compositionalLayoutSection else {
             return }
         
@@ -54,7 +51,6 @@ extension MessageViewController: UICollectionViewDelegate, UICollectionViewDataS
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MessageCell.identifier, for: indexPath) as? MessageCell else { return .init() }
         
         cell.setCell(with: messages[indexPath.row].message, type: messages[indexPath.row].chatType)
-//        cell.layoutIfNeeded()
         
         return cell
     }
@@ -71,18 +67,3 @@ private extension MessageViewController {
         }
     }
 }
-
-//extension MessageViewController: MessageCollectionViewLayoutDelegate {
-//
-//    func collectionView(_ collectionView: UICollectionView, heightForCellAtIndexPath indexPath: IndexPath) -> CGFloat {
-//        let width = collectionView.bounds.width
-//        let estimateHeight: CGFloat = 200.0
-//        let dummyCell: MessageCell = .init(frame: .init(x: 0, y: 0, width: width, height: estimateHeight))
-//        dummyCell.setCell(with: messages[indexPath.row].message, type: messages[indexPath.row].chatType)
-//        dummyCell.layoutIfNeeded()
-//
-//        let estimateSize = dummyCell.systemLayoutSizeFitting(.init(width: width, height: estimateHeight))
-//
-//        return estimateSize.height
-//    }
-//}

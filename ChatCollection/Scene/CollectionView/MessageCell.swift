@@ -52,13 +52,6 @@ final class MessageCell: UICollectionViewCell {
         chatType = .none
     }
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//
-//        self.configureLayouts()
-//        self.configureProperties()
-//    }
-    
     func setCell(with message: String, type: ChatType) {
         self.messageLabel.text = message
         self.chatType = type
