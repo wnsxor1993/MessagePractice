@@ -18,8 +18,6 @@
 		D2C389A52974EAD50081E5F7 /* ChatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C389A42974EAD50081E5F7 /* ChatType.swift */; };
 		D2C389AA2974EC6E0081E5F7 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C389A92974EC6E0081E5F7 /* MessageCell.swift */; };
 		D2C389AD297505250081E5F7 /* UIView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C389AC297505250081E5F7 /* UIView +.swift */; };
-		D2C389B329752F400081E5F7 /* MessageCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C389B229752F400081E5F7 /* MessageCollectionViewLayout.swift */; };
-		D2C389B529752F5B0081E5F7 /* MessageCollectionViewLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C389B429752F5B0081E5F7 /* MessageCollectionViewLayoutDelegate.swift */; };
 		D2C389B729753EE30081E5F7 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C389B629753EE30081E5F7 /* PaddingLabel.swift */; };
 		D2C389C229763B890081E5F7 /* MessageCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C389C129763B890081E5F7 /* MessageCompositionalLayout.swift */; };
 /* End PBXBuildFile section */
@@ -38,8 +36,6 @@
 		D2C389A42974EAD50081E5F7 /* ChatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatType.swift; sourceTree = "<group>"; };
 		D2C389A92974EC6E0081E5F7 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		D2C389AC297505250081E5F7 /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView +.swift"; sourceTree = "<group>"; };
-		D2C389B229752F400081E5F7 /* MessageCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewLayout.swift; sourceTree = "<group>"; };
-		D2C389B429752F5B0081E5F7 /* MessageCollectionViewLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewLayoutDelegate.swift; sourceTree = "<group>"; };
 		D2C389B629753EE30081E5F7 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		D2C389C129763B890081E5F7 /* MessageCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCompositionalLayout.swift; sourceTree = "<group>"; };
 		DA16FD277A4DDC8D7CED0D62 /* Pods-ChatCollection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatCollection.debug.xcconfig"; path = "Target Support Files/Pods-ChatCollection/Pods-ChatCollection.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,8 +144,6 @@
 			children = (
 				D2C389A92974EC6E0081E5F7 /* MessageCell.swift */,
 				D2C389C129763B890081E5F7 /* MessageCompositionalLayout.swift */,
-				D2C389B229752F400081E5F7 /* MessageCollectionViewLayout.swift */,
-				D2C389B429752F5B0081E5F7 /* MessageCollectionViewLayoutDelegate.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -294,8 +288,6 @@
 				D2C389AD297505250081E5F7 /* UIView +.swift in Sources */,
 				D2C389A52974EAD50081E5F7 /* ChatType.swift in Sources */,
 				D2C389AA2974EC6E0081E5F7 /* MessageCell.swift in Sources */,
-				D2C389B329752F400081E5F7 /* MessageCollectionViewLayout.swift in Sources */,
-				D2C389B529752F5B0081E5F7 /* MessageCollectionViewLayoutDelegate.swift in Sources */,
 				D2C389B729753EE30081E5F7 /* PaddingLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
