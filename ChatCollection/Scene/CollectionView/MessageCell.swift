@@ -52,20 +52,17 @@ final class MessageCell: UICollectionViewCell {
         chatType = .none
     }
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//
-//        self.configureLayouts()
-//        self.configureProperties()
-//    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.configureLayouts()
+        self.configureProperties()
+    }
     
     func setCell(with message: String, type: ChatType) {
         self.messageLabel.text = message
         self.chatType = type
         self.dateLabel.text = "오전 03:20"
-        
-        self.configureLayouts()
-        self.configureProperties()
     }
 }
 
