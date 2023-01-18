@@ -9,9 +9,7 @@ import SocketIO
 
 final class SocketIOManager {
     
-    static let shared: SocketIOManager = .init()
-    
-    private var manager: SocketManager = .init(socketURL: URL(string: "")!, config: [.log(true), .compress])
+    private var manager: SocketManager = .init(socketURL: URL(string: "ws://192.168.0.59:9091")!, config: [.log(true), .compress])
     private var socket: SocketIOClient?
     
     init() {
@@ -27,8 +25,8 @@ final class SocketIOManager {
         self.socket?.disconnect()
     }
     
-    func sendMessage(with message: String, who nickName: String) {
-        self.socket?.emit("Event", with: [["message": message], ["nickName": nickName]])
+    func sendMessage(with message: String) {
+        self.socket?.emit("Event", with: [["userName": "zeto", "message": "\(message)"]])
     }
 }
 
@@ -36,12 +34,12 @@ private extension SocketIOManager {
     
     func configureSocket() {
         // socket을 룸 단위로 구분 (기본 룸을 blind로 설정)
-        self.socket = self.manager.socket(forNamespace: "/blind")
+        self.socket = self.manager.socket(forNamespace: "/")
         
         guard let socket else { return }
         
         // 이름이 ""로 emit된 이벤트 수신
-        socket.on("") { dataArray, ack in
+        socket.on("Event") { dataArray, ack in
             
         }
     }

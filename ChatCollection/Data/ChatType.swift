@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ChatType {
+enum ChatType: Equatable {
     
     case none
     case send

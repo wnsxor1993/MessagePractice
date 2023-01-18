@@ -22,4 +22,7 @@ target 'ChatCollection' do
   # Socket.io
   pod 'Socket.IO-Client-Swift', '~> 15.2.0'
 
+  # Starscream
+  pod 'Starscream'
+
 end

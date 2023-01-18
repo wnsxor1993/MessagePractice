@@ -44,18 +44,22 @@ final class MessageCell: UICollectionViewCell {
         fatalError("Does not use this initializer")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        messageLabel.text = ""
-        dateLabel.text = ""
+        messageLabel.text = nil
+        dateLabel.text = nil
         chatType = .none
     }
     
-    func setCell(with message: String, type: ChatType) {
+    func setCell(with message: String, type: ChatType, dateString: String) {
         self.messageLabel.text = message
         self.chatType = type
-        self.dateLabel.text = "오전 03:20"
+        self.dateLabel.text = dateString
         
         self.configureLayouts()
         self.configureProperties()

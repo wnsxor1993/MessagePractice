@@ -26,6 +26,7 @@ DEPENDENCIES:
   - RxSwift (= 6.5.0)
   - SnapKit (~> 5.6.0)
   - Socket.IO-Client-Swift (~> 15.2.0)
+  - Starscream
   - Then
 
 SPEC REPOS:
@@ -53,6 +54,6 @@ SPEC CHECKSUMS:
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 7e49e3b58ed86dffb778a5ffb98c03925b28b753
+PODFILE CHECKSUM: 38bd66d92324af5cb4a9e1d98ccb9dc74e92718d
 
 COCOAPODS: 1.11.3
