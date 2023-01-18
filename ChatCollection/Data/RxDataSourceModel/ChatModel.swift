@@ -13,13 +13,3 @@ struct ChatModel {
     let message: String
     let date: Date
 }
-
-extension ChatModel: IdentifiableType, Equatable {
-    
-    typealias Identity = String
-    
-    var identity: String {
-        
-        return UUID().uuidString
-    }
-}

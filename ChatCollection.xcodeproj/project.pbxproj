@@ -11,7 +11,7 @@
 		D2C14450297786CF00915B66 /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1444F297786CF00915B66 /* SectionModel.swift */; };
 		D2C144562977AA2600915B66 /* MessageDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C144552977AA2600915B66 /* MessageDateFormatter.swift */; };
 		D2C144582977B5C400915B66 /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C144572977B5C400915B66 /* WebSocketManager.swift */; };
-		D2C1445A2977B9C800915B66 /* UIScrollView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C144592977B9C800915B66 /* UIScrollView +.swift */; };
+		D2C1445A2977B9C800915B66 /* UICollectionView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C144592977B9C800915B66 /* UICollectionView +.swift */; };
 		D2C3898D2974E4750081E5F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3898C2974E4750081E5F7 /* AppDelegate.swift */; };
 		D2C3898F2974E4750081E5F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3898E2974E4750081E5F7 /* SceneDelegate.swift */; };
 		D2C389912974E4750081E5F7 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C389902974E4750081E5F7 /* MessageViewController.swift */; };
@@ -35,7 +35,7 @@
 		D2C1444F297786CF00915B66 /* SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModel.swift; sourceTree = "<group>"; };
 		D2C144552977AA2600915B66 /* MessageDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDateFormatter.swift; sourceTree = "<group>"; };
 		D2C144572977B5C400915B66 /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
-		D2C144592977B9C800915B66 /* UIScrollView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView +.swift"; sourceTree = "<group>"; };
+		D2C144592977B9C800915B66 /* UICollectionView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView +.swift"; sourceTree = "<group>"; };
 		D2C389892974E4750081E5F7 /* ChatCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C3898C2974E4750081E5F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2C3898E2974E4750081E5F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,8 +144,8 @@
 		D2C389A72974EC450081E5F7 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				D2C389A02974E85E0081E5F7 /* SocketIOManager.swift */,
 				D2C1444C2977869B00915B66 /* RxDataSourceManager.swift */,
+				D2C389A02974E85E0081E5F7 /* SocketIOManager.swift */,
 				D2C144572977B5C400915B66 /* WebSocketManager.swift */,
 			);
 			path = Manager;
@@ -165,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				D2C389AC297505250081E5F7 /* UIView +.swift */,
-				D2C144592977B9C800915B66 /* UIScrollView +.swift */,
+				D2C144592977B9C800915B66 /* UICollectionView +.swift */,
 			);
 			path = "Extension +";
 			sourceTree = "<group>";
@@ -323,7 +323,7 @@
 				D2C389A12974E85E0081E5F7 /* SocketIOManager.swift in Sources */,
 				D2C389A32974EAC10081E5F7 /* ChatModel.swift in Sources */,
 				D2C144562977AA2600915B66 /* MessageDateFormatter.swift in Sources */,
-				D2C1445A2977B9C800915B66 /* UIScrollView +.swift in Sources */,
+				D2C1445A2977B9C800915B66 /* UICollectionView +.swift in Sources */,
 				D2C3898F2974E4750081E5F7 /* SceneDelegate.swift in Sources */,
 				D2C389C229763B890081E5F7 /* MessageCompositionalLayout.swift in Sources */,
 				D2C1444D2977869B00915B66 /* RxDataSourceManager.swift in Sources */,

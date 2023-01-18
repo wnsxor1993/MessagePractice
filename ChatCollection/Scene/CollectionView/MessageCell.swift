@@ -54,6 +54,8 @@ final class MessageCell: UICollectionViewCell {
         messageLabel.text = nil
         dateLabel.text = nil
         chatType = .none
+        
+        self.messageLabel.layoutIfNeeded()
     }
     
     func setCell(with message: String, type: ChatType, dateString: String) {
@@ -74,26 +76,26 @@ private extension MessageCell {
             break
         
         case .send:
-            messageLabel.snp.makeConstraints { make in
+            messageLabel.snp.remakeConstraints { make in
                 make.top.bottom.equalToSuperview()
                 make.trailing.equalToSuperview().inset(20)
                 make.leading.greaterThanOrEqualToSuperview()
             }
             
-            dateLabel.snp.makeConstraints { make in
+            dateLabel.snp.remakeConstraints { make in
                 make.trailing.equalTo(messageLabel.snp.leading).offset(-4)
                 make.leading.greaterThanOrEqualToSuperview().inset(56)
                 make.bottom.equalTo(messageLabel)
             }
             
         case .receive:
-            messageLabel.snp.makeConstraints { make in
+            messageLabel.snp.remakeConstraints { make in
                 make.top.bottom.equalToSuperview()
                 make.leading.equalToSuperview().inset(56)
                 make.trailing.lessThanOrEqualToSuperview()
             }
             
-            dateLabel.snp.makeConstraints { make in
+            dateLabel.snp.remakeConstraints { make in
                 make.leading.equalTo(messageLabel.snp.trailing).offset(4)
                 make.trailing.lessThanOrEqualToSuperview().inset(24)
                 make.bottom.equalTo(messageLabel)

@@ -31,7 +31,7 @@ class MessageViewController: UIViewController {
         $0.backgroundColor = .gray
     }
     
-    private var messageDataSource: RxCollectionViewSectionedAnimatedDataSource<SectionModel>?
+    private var messageDataSource: RxCollectionViewSectionedReloadDataSource<SectionModel>?
     private let sectionModelsRelay: PublishRelay<[SectionModel]> = .init()
     
     let dataManager: RxDataSourceManager = .shared
@@ -44,22 +44,6 @@ class MessageViewController: UIViewController {
         self.configureLayouts()
         self.bindInnerAction()
         self.bindDataSource()
-    }
-    
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//
-//        guard !(self.messageCollectionView.visibleCells.isEmpty) else { return }
-//
-//        self.messageCollectionView.collectionViewLayout.invalidateLayout()
-//    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        self.messageCollectionView.subviews.forEach {
-            print("width: \($0.frame.width), height: \($0.frame.height)")
-        }
     }
 }
 
@@ -89,7 +73,7 @@ private extension MessageViewController {
             .setDelegate(self)
             .disposed(by: disposeBag)
         
-        self.messageDataSource = RxCollectionViewSectionedAnimatedDataSource(configureCell: { dataSource, collectionView, indexPath, item in
+        self.messageDataSource = RxCollectionViewSectionedReloadDataSource(configureCell: { dataSource, collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MessageCell.identifier, for: indexPath) as? MessageCell else { return .init() }
             
             let formatter: MessageDateFormatter = .init()

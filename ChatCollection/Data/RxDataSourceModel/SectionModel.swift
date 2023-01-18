@@ -13,7 +13,7 @@ struct SectionModel {
     var items: [ChatModel]
 }
 
-extension SectionModel: AnimatableSectionModelType {
+extension SectionModel: SectionModelType {
     
     typealias Item = ChatModel
     typealias Identity = String
