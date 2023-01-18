@@ -35,11 +35,11 @@ final class RxDataSourceManager {
         return self.allSections
     }
     
-    func sendMessage(text: String) {
+    func sendMessage(text: String, type: ChatType) {
 //        self.socketManager.sendMessage(with: text)
 //        self.socketManager.sendMessage(text)
         
-        let newDTO: ChatModel = .init(chatType: .send, message: text, date: .init())
+        let newDTO: ChatModel = .init(chatType: type, message: text, date: .init())
         mainSectionItems.append(newDTO)
         
         var sectionModel: SectionModel = .init(header: "Main", items: mainSectionItems)

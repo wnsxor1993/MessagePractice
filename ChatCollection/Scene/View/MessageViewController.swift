@@ -98,9 +98,10 @@ private extension MessageViewController {
                     self.sectionModelsRelay.accept(self.dataManager.fetchSectionModels())
                 }
                 
-                let texts: [String] = ["이건 테스트", "바바바\n마마마\n요호호", "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"]
+                let texts: [String] = ["이건 테스트", "바바바\n마마마\n요호호", "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ", "요건 몰랐지", "abcdefghijklmnopqrstuvwxyz"]
+                let sendType: [ChatType] = [.send, .receive]
                 
-                self.dataManager.sendMessage(text: texts.randomElement() ?? "Nil")
+                self.dataManager.sendMessage(text: texts.randomElement() ?? "Nil", type: sendType.randomElement() ?? .none)
             }
             .disposed(by: disposeBag)
     }
