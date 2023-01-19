@@ -10,9 +10,8 @@ import SnapKit
 import Then
 import RxSwift
 import RxCocoa
-import RxDataSources
 
-class MessageViewController: UIViewController {
+final class MessageViewController: UIViewController {
 
     private lazy var messageCollectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: .init()).then {
         guard let compositionalLayout = MessageCompositionalLayout().compositionalLayoutSection else {
