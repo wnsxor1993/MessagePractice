@@ -55,8 +55,8 @@ final class MessageCell: UICollectionViewCell {
         dateLabel.text = nil
         chatType = .none
         
-        self.messageLabel.snp.removeConstraints()
-        self.dateLabel.snp.removeConstraints()
+//        self.messageLabel.snp.removeConstraints()
+//        self.dateLabel.snp.removeConstraints()
         self.messageLabel.layoutIfNeeded()
     }
     

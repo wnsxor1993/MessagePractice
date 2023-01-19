@@ -31,10 +31,11 @@ class MessageViewController: UIViewController {
         $0.backgroundColor = .gray
     }
     
-    private var messageDataSource: RxCollectionViewSectionedReloadDataSource<SectionModel>?
-    private let sectionModelsRelay: PublishRelay<[SectionModel]> = .init()
+    private let sectionModelsRelay: PublishRelay<[DiffableSection]> = .init()
     
-    let dataManager: RxDataSourceManager = .shared
+    private var messageDiffableDataSource: UICollectionViewDiffableDataSource<DiffableSection, ChatDTO>?
+    private let dataSourceManager: DiffableDataSourceManager = .init()
+    
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -43,7 +44,7 @@ class MessageViewController: UIViewController {
         self.view.backgroundColor = UIColor(red: 216/255, green: 238/255, blue: 192/255, alpha: 1)
         self.configureLayouts()
         self.bindInnerAction()
-        self.bindDataSource()
+        self.configureDataSource()
     }
 }
 
@@ -68,12 +69,8 @@ private extension MessageViewController {
         }
     }
     
-    func bindInnerAction() {
-        self.messageCollectionView.rx
-            .setDelegate(self)
-            .disposed(by: disposeBag)
-        
-        self.messageDataSource = RxCollectionViewSectionedReloadDataSource(configureCell: { dataSource, collectionView, indexPath, item in
+    func configureDataSource() {
+        self.messageDiffableDataSource = UICollectionViewDiffableDataSource(collectionView: self.messageCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MessageCell.identifier, for: indexPath) as? MessageCell else { return .init() }
             
             let formatter: MessageDateFormatter = .init()
@@ -86,7 +83,18 @@ private extension MessageViewController {
             }
             
             return cell
-        })
+        }
+        
+        guard let messageDiffableDataSource else { return }
+        
+        self.messageCollectionView.dataSource = messageDiffableDataSource
+        self.dataSourceManager.setDataSource(messageDiffableDataSource)
+    }
+    
+    func bindInnerAction() {
+        self.messageCollectionView.rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
         
         self.messageButton.rx
             .tap
@@ -94,23 +102,11 @@ private extension MessageViewController {
             .drive { [weak self] _ in
                 guard let self else { return }
                 
-                defer {
-                    self.sectionModelsRelay.accept(self.dataManager.fetchSectionModels())
-                }
-                
                 let texts: [String] = ["이건 테스트", "바바바\n마마마\n요호호", "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ", "요건 몰랐지", "abcdefghijklmnopqrstuvwxyz"]
                 let sendType: [ChatType] = [.send, .receive]
                 
-                self.dataManager.sendMessage(text: texts.randomElement() ?? "Nil", type: sendType.randomElement() ?? .none)
+                self.dataSourceManager.sendMessage(text: texts.randomElement() ?? "Nil", type: sendType.randomElement() ?? .none)
             }
-            .disposed(by: disposeBag)
-    }
-    
-    func bindDataSource() {
-        guard let messageDataSource else { return }
-        
-        self.sectionModelsRelay
-            .bind(to: messageCollectionView.rx.items(dataSource: messageDataSource))
             .disposed(by: disposeBag)
     }
 }
