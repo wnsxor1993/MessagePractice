@@ -21,7 +21,8 @@ class MessageViewController: UIViewController {
         $0.collectionViewLayout = compositionalLayout
         $0.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
         $0.backgroundColor = .clear
-        $0.register(MessageCell.self, forCellWithReuseIdentifier: MessageCell.identifier)
+        $0.register(SendCell.self, forCellWithReuseIdentifier: SendCell.identifier)
+        $0.register(ReceiveCell.self, forCellWithReuseIdentifier: ReceiveCell.identifier)
     }
     
     private let messageButton: UIButton = .init().then {
@@ -71,16 +72,29 @@ private extension MessageViewController {
     
     func configureDataSource() {
         self.messageDiffableDataSource = UICollectionViewDiffableDataSource(collectionView: self.messageCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MessageCell.identifier, for: indexPath) as? MessageCell else { return .init() }
+            var identifier = ""
+            
+            switch item.chatType {
+            case .none:
+                break
+                
+            case .send:
+                identifier = SendCell.identifier
+                
+            case .receive:
+                identifier = ReceiveCell.identifier
+            }
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? MessageCell else { return .init() }
             
             let formatter: MessageDateFormatter = .init()
             let dateString: String = formatter.convertToString(from: item.date)
             
-            cell.setCell(with: item.message, type: item.chatType, dateString: dateString)
+            cell.setCell(with: item.message, dateString: dateString)
             
-            DispatchQueue.main.async {
-                self.messageCollectionView.scrollToBottom(animated: false)
-            }
+//            DispatchQueue.main.async {
+//                self.messageCollectionView.scrollToBottom(animated: false)
+//            }
             
             return cell
         }

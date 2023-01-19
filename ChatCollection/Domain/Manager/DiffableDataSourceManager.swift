@@ -14,6 +14,16 @@ final class DiffableDataSourceManager {
     private var allSections: [DiffableSection] = []
     private var mainSectionItems: [ChatDTO] = []
     
+    let socketManger: SocketIOManager = .init()
+    
+    init() {
+        self.socketManger.connectSocket()
+    }
+    
+    deinit {
+        self.socketManger.disconnectSocket()
+    }
+    
     func setDataSource(_ dataSource: UICollectionViewDiffableDataSource<DiffableSection, ChatDTO>) {
         self.dataSource = dataSource
     }
@@ -47,5 +57,7 @@ final class DiffableDataSourceManager {
                 self.dataSource?.apply(snapshot, animatingDifferences: false)
             }
         }
+        
+        self.socketManger.sendMessage(with: text)
     }
 }
