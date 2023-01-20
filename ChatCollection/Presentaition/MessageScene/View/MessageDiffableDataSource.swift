@@ -12,20 +12,32 @@ final class MessageDiffableDataSource {
     private let collectionView: UICollectionView
     private var dataSource: UICollectionViewDiffableDataSource<DiffableSection, ChatDTO>?
     
+    var hasSnapshot: Bool {
+        guard let dataSource else { return false }
+        
+        if dataSource.snapshot().numberOfSections == 0 {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     init(_ collectionView: UICollectionView) {
         self.collectionView = collectionView
         
         self.configureDataSource()
     }
     
-    func fetchBaseDatas(with sections: [DiffableSection], items: [[ChatDTO]]) {
+    func fetchBaseDatas(with sections: [DiffableSection: [ChatDTO]]) {
         var snapshot: NSDiffableDataSourceSnapshot<DiffableSection, ChatDTO> = .init()
-        snapshot.appendSections(sections)
         
-        for (index, section) in sections.enumerated() {
-            guard let item = items[safe: index] else { return }
+        let allKeys = sections.map { $0.key }
+        snapshot.appendSections(allKeys)
+        
+        allKeys.forEach {
+            guard let items = sections[$0] else { return }
             
-            snapshot.appendItems(item, toSection: section)
+            snapshot.appendItems(items, toSection: $0)
         }
         
         DispatchQueue.global(qos: .background).async {
@@ -33,11 +45,17 @@ final class MessageDiffableDataSource {
         }
     }
     
-    func addItems(to section: DiffableSection, with items: [ChatDTO]) {
+    func addItems(with sections: [DiffableSection: [ChatDTO]]) {
         guard let dataSource else { return }
         
+        let allKeys = sections.map { $0.key }
         var snapshot = dataSource.snapshot()
-        snapshot.appendItems(items, toSection: section)
+        
+        allKeys.forEach {
+            guard let items = sections[$0] else { return }
+            
+            snapshot.appendItems(items, toSection: $0)
+        }
         
         DispatchQueue.global(qos: .background).async {
             self.dataSource?.apply(snapshot, animatingDifferences: false)

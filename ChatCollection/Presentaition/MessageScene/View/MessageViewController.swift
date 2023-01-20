@@ -34,7 +34,7 @@ final class MessageViewController: UIViewController {
     private let sectionModelsRelay: PublishRelay<[DiffableSection]> = .init()
     private let viewModel: MessageViewModel = .init()
     
-    private var messageDiffableDataSource: UICollectionViewDiffableDataSource<DiffableSection, ChatDTO>?
+    private lazy var messageDiffableDataSource: MessageDiffableDataSource = .init(self.messageCollectionView)
     private let dataSourceManager: DiffableDataSourceManager = .init()
     
     let disposeBag = DisposeBag()
@@ -45,7 +45,7 @@ final class MessageViewController: UIViewController {
         self.view.backgroundColor = UIColor(red: 216/255, green: 238/255, blue: 192/255, alpha: 1)
         self.configureLayouts()
         self.bindInnerAction()
-        self.configureDataSource()
+        self.bindWithViewModel()
     }
 }
 
@@ -70,56 +70,32 @@ private extension MessageViewController {
         }
     }
     
-    func configureDataSource() {
-        self.messageDiffableDataSource = UICollectionViewDiffableDataSource(collectionView: self.messageCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            var identifier = ""
-            
-            switch item.chatType {
-            case .none:
-                break
-                
-            case .send:
-                identifier = SendCell.identifier
-                
-            case .receive:
-                identifier = ReceiveCell.identifier
-            }
-            
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? MessageCell else { return .init() }
-            
-            let formatter: MessageDateFormatter = .init()
-            let dateString: String = formatter.convertToString(from: item.date)
-            
-            cell.setCell(with: item.message, dateString: dateString)
-            
-//            DispatchQueue.main.async {
-//                self.messageCollectionView.scrollToBottom(animated: false)
-//            }
-            
-            return cell
-        }
-        
-        guard let messageDiffableDataSource else { return }
-        
-        self.messageCollectionView.dataSource = messageDiffableDataSource
-        self.dataSourceManager.setDataSource(messageDiffableDataSource)
-    }
-    
     func bindInnerAction() {
         self.messageCollectionView.rx
             .setDelegate(self)
             .disposed(by: disposeBag)
+    }
+    
+    func bindWithViewModel() {
+        let textButtonString = self.messageButton.rx.tap.map {
+            let texts: [String] = ["이건 테스트", "바바바\n마마마\n요호호", "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ", "요건 몰랐지", "abcdefghijklmnopqrstuvwxyz"]
+            return texts.randomElement() ?? "Nil"
+        }
+            
+        let input: MessageViewModel.Input = .init(viewWillAppear: self.rx.viewWillAppear.asDriver(onErrorJustReturn: false),
+                                                  textButton: textButtonString.asDriver(onErrorJustReturn: ""))
+        let ouput: MessageViewModel.Output = self.viewModel.transfer(with: input)
         
-        self.messageButton.rx
-            .tap
-            .asDriver()
-            .drive { [weak self] _ in
-                guard let self else { return }
+        ouput.dataSourceRelay
+            .subscribe { [weak self] result in
+                guard let self, let datas = result.element else { return }
                 
-                let texts: [String] = ["이건 테스트", "바바바\n마마마\n요호호", "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ", "요건 몰랐지", "abcdefghijklmnopqrstuvwxyz"]
-                let sendType: [ChatType] = [.send, .receive]
-                
-                self.dataSourceManager.sendMessage(text: texts.randomElement() ?? "Nil", type: sendType.randomElement() ?? .none)
+                if self.messageDiffableDataSource.hasSnapshot {
+                    self.messageDiffableDataSource.addItems(with: datas)
+                    
+                } else {
+                    self.messageDiffableDataSource.fetchBaseDatas(with: datas)
+                }
             }
             .disposed(by: disposeBag)
     }

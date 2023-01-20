@@ -18,6 +18,7 @@
 		D2C1446A29792C6C00915B66 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1446929792C6C00915B66 /* MessageViewModel.swift */; };
 		D2C1446F297932F700915B66 /* MessageDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1446E297932F700915B66 /* MessageDiffableDataSource.swift */; };
 		D2C14471297A193D00915B66 /* Array +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C14470297A193D00915B66 /* Array +.swift */; };
+		D2C14475297A1F4700915B66 /* RxSwift +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C14474297A1F4700915B66 /* RxSwift +.swift */; };
 		D2C3898D2974E4750081E5F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3898C2974E4750081E5F7 /* AppDelegate.swift */; };
 		D2C3898F2974E4750081E5F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3898E2974E4750081E5F7 /* SceneDelegate.swift */; };
 		D2C389912974E4750081E5F7 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C389902974E4750081E5F7 /* MessageViewController.swift */; };
@@ -47,6 +48,7 @@
 		D2C1446929792C6C00915B66 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		D2C1446E297932F700915B66 /* MessageDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDiffableDataSource.swift; sourceTree = "<group>"; };
 		D2C14470297A193D00915B66 /* Array +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array +.swift"; sourceTree = "<group>"; };
+		D2C14474297A1F4700915B66 /* RxSwift +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift +.swift"; sourceTree = "<group>"; };
 		D2C389892974E4750081E5F7 /* ChatCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C3898C2974E4750081E5F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2C3898E2974E4750081E5F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				D2C14470297A193D00915B66 /* Array +.swift */,
 				D2C389AC297505250081E5F7 /* UIView +.swift */,
+				D2C14474297A1F4700915B66 /* RxSwift +.swift */,
 				D2C144592977B9C800915B66 /* UICollectionView +.swift */,
 			);
 			path = "Extension +";
@@ -373,6 +376,7 @@
 				D2C1445A2977B9C800915B66 /* UICollectionView +.swift in Sources */,
 				D2C1446F297932F700915B66 /* MessageDiffableDataSource.swift in Sources */,
 				D2C3898F2974E4750081E5F7 /* SceneDelegate.swift in Sources */,
+				D2C14475297A1F4700915B66 /* RxSwift +.swift in Sources */,
 				D2C389C229763B890081E5F7 /* MessageCompositionalLayout.swift in Sources */,
 				D2C389AD297505250081E5F7 /* UIView +.swift in Sources */,
 				D2C144612978D87E00915B66 /* DiffableDataSourceManager.swift in Sources */,

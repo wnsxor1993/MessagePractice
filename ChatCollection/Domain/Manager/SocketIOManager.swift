@@ -41,7 +41,7 @@ private extension SocketIOManager {
         
         // 이름이 ""로 emit된 이벤트 수신
         socket.on("Event") { dataArray, ack in
-            
+            print(dataArray)
         }
     }
 }
