@@ -5,6 +5,7 @@
 //  Created by Zeto on 2023/01/16.
 //
 
+import Foundation
 import SocketIO
 
 final class SocketIOManager {

@@ -32,6 +32,7 @@ final class MessageViewController: UIViewController {
     }
     
     private let sectionModelsRelay: PublishRelay<[DiffableSection]> = .init()
+    private let viewModel: MessageViewModel = .init()
     
     private var messageDiffableDataSource: UICollectionViewDiffableDataSource<DiffableSection, ChatDTO>?
     private let dataSourceManager: DiffableDataSourceManager = .init()

@@ -15,6 +15,9 @@
 		D2C144612978D87E00915B66 /* DiffableDataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C144602978D87E00915B66 /* DiffableDataSourceManager.swift */; };
 		D2C144632978FCFD00915B66 /* ReceiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C144622978FCFD00915B66 /* ReceiveCell.swift */; };
 		D2C144652978FE0600915B66 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C144642978FE0600915B66 /* MessageCell.swift */; };
+		D2C1446A29792C6C00915B66 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1446929792C6C00915B66 /* MessageViewModel.swift */; };
+		D2C1446F297932F700915B66 /* MessageDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1446E297932F700915B66 /* MessageDiffableDataSource.swift */; };
+		D2C14471297A193D00915B66 /* Array +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C14470297A193D00915B66 /* Array +.swift */; };
 		D2C3898D2974E4750081E5F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3898C2974E4750081E5F7 /* AppDelegate.swift */; };
 		D2C3898F2974E4750081E5F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3898E2974E4750081E5F7 /* SceneDelegate.swift */; };
 		D2C389912974E4750081E5F7 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C389902974E4750081E5F7 /* MessageViewController.swift */; };
@@ -41,6 +44,9 @@
 		D2C144602978D87E00915B66 /* DiffableDataSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataSourceManager.swift; sourceTree = "<group>"; };
 		D2C144622978FCFD00915B66 /* ReceiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveCell.swift; sourceTree = "<group>"; };
 		D2C144642978FE0600915B66 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		D2C1446929792C6C00915B66 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		D2C1446E297932F700915B66 /* MessageDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDiffableDataSource.swift; sourceTree = "<group>"; };
+		D2C14470297A193D00915B66 /* Array +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array +.swift"; sourceTree = "<group>"; };
 		D2C389892974E4750081E5F7 /* ChatCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C3898C2974E4750081E5F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2C3898E2974E4750081E5F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +121,7 @@
 		D2C1446729792BA000915B66 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D2C1446929792C6C00915B66 /* MessageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -125,6 +132,16 @@
 				D2C389C129763B890081E5F7 /* MessageCompositionalLayout.swift */,
 			);
 			path = CollectionLayout;
+			sourceTree = "<group>";
+		};
+		D2C1446D29792FF500915B66 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D2C144642978FE0600915B66 /* MessageCell.swift */,
+				D2C389A92974EC6E0081E5F7 /* SendCell.swift */,
+				D2C144622978FCFD00915B66 /* ReceiveCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		D2C389802974E4750081E5F7 = {
@@ -192,6 +209,7 @@
 		D2C389AB2975051C0081E5F7 /* Extension + */ = {
 			isa = PBXGroup;
 			children = (
+				D2C14470297A193D00915B66 /* Array +.swift */,
 				D2C389AC297505250081E5F7 /* UIView +.swift */,
 				D2C144592977B9C800915B66 /* UICollectionView +.swift */,
 			);
@@ -206,21 +224,20 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		D2C389B9297625680081E5F7 /* CollectionViewCell */ = {
+		D2C389B9297625680081E5F7 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				D2C144642978FE0600915B66 /* MessageCell.swift */,
-				D2C389A92974EC6E0081E5F7 /* SendCell.swift */,
-				D2C144622978FCFD00915B66 /* ReceiveCell.swift */,
+				D2C1446D29792FF500915B66 /* Cell */,
 			);
-			path = CollectionViewCell;
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		D2C389BA297625820081E5F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				D2C389902974E4750081E5F7 /* MessageViewController.swift */,
-				D2C389B9297625680081E5F7 /* CollectionViewCell */,
+				D2C1446E297932F700915B66 /* MessageDiffableDataSource.swift */,
+				D2C389B9297625680081E5F7 /* CollectionView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -354,16 +371,19 @@
 				D2C389A12974E85E0081E5F7 /* SocketIOManager.swift in Sources */,
 				D2C144562977AA2600915B66 /* MessageDateFormatter.swift in Sources */,
 				D2C1445A2977B9C800915B66 /* UICollectionView +.swift in Sources */,
+				D2C1446F297932F700915B66 /* MessageDiffableDataSource.swift in Sources */,
 				D2C3898F2974E4750081E5F7 /* SceneDelegate.swift in Sources */,
 				D2C389C229763B890081E5F7 /* MessageCompositionalLayout.swift in Sources */,
 				D2C389AD297505250081E5F7 /* UIView +.swift in Sources */,
 				D2C144612978D87E00915B66 /* DiffableDataSourceManager.swift in Sources */,
+				D2C1446A29792C6C00915B66 /* MessageViewModel.swift in Sources */,
 				D2C389A52974EAD50081E5F7 /* ChatType.swift in Sources */,
 				D2C389AA2974EC6E0081E5F7 /* SendCell.swift in Sources */,
 				D2C389B729753EE30081E5F7 /* PaddingLabel.swift in Sources */,
 				D2C144652978FE0600915B66 /* MessageCell.swift in Sources */,
 				D2C1445F2978D72500915B66 /* ChatDTO.swift in Sources */,
 				D2C144582977B5C400915B66 /* WebSocketManager.swift in Sources */,
+				D2C14471297A193D00915B66 /* Array +.swift in Sources */,
 				D2C144632978FCFD00915B66 /* ReceiveCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
