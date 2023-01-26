@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ChatType: Equatable {
+enum ChatType: CaseIterable {
     
     case none
     case send

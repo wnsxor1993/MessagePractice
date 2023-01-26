@@ -2,12 +2,12 @@
 //  ChatDTO.swift
 //  ChatCollection
 //
-//  Created by Zeto on 2023/01/16.
+//  Created by Zeto on 2023/01/19.
 //
 
-import RxDataSources
+import Foundation
 
-struct ChatModel {
+struct ChatDTO: Hashable {
     
     let chatType: ChatType
     let message: String

@@ -13,7 +13,7 @@ final class WebSocketManager {
     private var webSocket: WebSocket?
     
     func connect() {
-        let urlString = "ws://192.168.0.59:8080/ws/chat"
+        let urlString = "ws://192.168.0.59:8080"
         
         guard let url = URL(string: urlString) else { return }
         
